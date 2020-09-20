@@ -353,6 +353,13 @@
       "address": "0xb19c7BFc9a7CbE4C35189d475725557A96bFb50A",
       "contract": "LinkToken"
     },
+    "UNI": {
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "decimals": 18,
+      "address": "0x71d82Eb6A5051CfF99582F4CDf2aE9cD402A4882",
+      "contract": "Uni"
+    },
     "cUNI": {
       "name": "Compound UNI",
       "symbol": "cUNI",
