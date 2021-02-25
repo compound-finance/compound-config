@@ -175,6 +175,7 @@
   },
   "Tokens": {
     "ZRX": {
+      "name": "0x Protocol",
       "symbol": "ZRX",
       "decimals": 18,
       "address": "0xc0e2d7d9279846b80eacdea57220ab2333bc049d"
@@ -194,6 +195,7 @@
       "contract": "TetherToken"
     },
     "USDC": {
+      "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6,
       "address": "0x07865c6e87b9f70255377e024ace6630c1eaa37f"
@@ -219,6 +221,7 @@
       "address": "0x31F42841c2db5173425b5223809CF3A38FEde360"
     },
     "BAT": {
+      "name": "Basic Attention Token",
       "symbol": "BAT",
       "decimals": 18,
       "address": "0x50390975d942e83d661d4bde43bf73b0ef27b426"
@@ -231,6 +234,7 @@
       "contract": "Comp"
     },
     "UNI": {
+      "name": "Uniswap",
       "symbol": "UNI",
       "decimals": 18,
       "address": "0xc8f88977e21630cf93c02d02d9e8812ff0dfc37a"
