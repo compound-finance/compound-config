@@ -56,7 +56,8 @@
         "CASH": "0xa05D481233dD83debd46Fe5cC394bF1ce4519492",
         "StarportImpl": "0xA60F86E8255a153D3f3eCE3886Ab9A50F46059c5",
         "CashImpl": "0xC1992dF87eCb5679ace6fBcd002bA472B5EE9672",
-        "ProxyAdmin": "0xe03eC4Eb8A585c8C85bb96D066828c8bd7660724"
+        "ProxyAdmin": "0xe03eC4Eb8A585c8C85bb96D066828c8bd7660724",
+        "ETH": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
     },
     "Blocks": {
         "CompoundLens": 9727772,
@@ -369,7 +370,7 @@
             "name": "Ether",
             "symbol": "ETH",
             "decimals": 18,
-            "address": "0x0000000000000000000000000000000000000000"
+            "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
         },
         "CASH": {
             "contract": "CashToken",
