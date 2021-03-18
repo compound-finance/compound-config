@@ -18,12 +18,20 @@ function mergeDeep(target, ...sources) {
         if (!target[key]) Object.assign(target, { [key]: {} });
         mergeDeep(target[key], source[key]);
       } else {
-        Object.assign(target, { [key]: source[key] });
+        Object.assign(target, { [fixKey(key)]: source[key] });
       }
     }
   }
 
   return mergeDeep(target, ...sources);
+}
+
+function fixKey(key) {
+  if (key === 'Cash') {
+    return 'CASH';
+  } else {
+    return key;
+  }
 }
 
 async function run() {

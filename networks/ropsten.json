@@ -53,12 +53,11 @@
         "PriceOracleProxy": "0xb90c96607b45f9bB7509861A1CE77Cb8a72EdFB2",
         "PriceFeedPoster": "0x83563ba7F1B093aae57Fe876f8D870f8a1508886",
         "Starport": "0xD905AbBA1C5Ea48c0598bE9F3f8ae31290B58613",
-        "CASH": "0xa05D481233dD83debd46Fe5cC394bF1ce4519492",
+        "CASH": "0xc65a4A1855d314033530A29Ab993A1717879E5BF",
         "StarportImpl": "0xed5DdA5976ec5F29910426d7876eBD6f307e0934",
         "CashImpl": "0x1ffe465b3c82499e1C637c02EFECD128B7B454CF",
         "ProxyAdmin": "0xd418B3A7c4a2b9d60fF8dDf9E94a8b75Aa3f60A5",
-        "ETH": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-        "Cash": "0xc65a4A1855d314033530A29Ab993A1717879E5BF"
+        "ETH": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
     },
     "Blocks": {
         "CompoundLens": 9727772,
