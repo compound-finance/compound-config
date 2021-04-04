@@ -34085,8 +34085,7 @@
                 }
             ],
             "stateMutability": "nonpayable",
-            "type": "constructor",
-            "signature": "constructor"
+            "type": "constructor"
         },
         {
             "anonymous": false,
@@ -34158,10 +34157,16 @@
                     "type": "address"
                 },
                 {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
                     "indexed": true,
-                    "internalType": "address",
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 },
                 {
                     "indexed": false,
@@ -34172,7 +34177,7 @@
             ],
             "name": "Lock",
             "type": "event",
-            "signature": "0xd6aba49fa5adb7dbc18ab12d057e77c75e5d4b345cf473c7514afbbd6f5fc626"
+            "signature": "0xc459acef3ffe957663bb49d644b20d0c790bcb41573893752a72ba6f023b9386"
         },
         {
             "anonymous": false,
@@ -34184,10 +34189,16 @@
                     "type": "address"
                 },
                 {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
                     "indexed": true,
-                    "internalType": "address",
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 },
                 {
                     "indexed": false,
@@ -34204,7 +34215,7 @@
             ],
             "name": "LockCash",
             "type": "event",
-            "signature": "0xe100221382bf5c3c3c6813f37ba19b1dd54b38d08a8755d30093f30fbc703a91"
+            "signature": "0x0ba767ef2faa3001dbd3344d5b427be12f2e090ae3dcbe2f0d0ecf2bf17a8a17"
         },
         {
             "anonymous": false,
@@ -34455,9 +34466,8 @@
             ],
             "name": "execTrxRequest",
             "outputs": [],
-            "stateMutability": "payable",
+            "stateMutability": "nonpayable",
             "type": "function",
-            "payable": true,
             "signature": "0x5f25fc12"
         },
         {
@@ -34596,9 +34606,14 @@
         {
             "inputs": [
                 {
-                    "internalType": "address",
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 }
             ],
             "name": "lockEthTo",
@@ -34606,7 +34621,7 @@
             "stateMutability": "payable",
             "type": "function",
             "payable": true,
-            "signature": "0x28a1b02e"
+            "signature": "0xcdf65c0b"
         },
         {
             "inputs": [
@@ -34621,16 +34636,21 @@
                     "type": "address"
                 },
                 {
-                    "internalType": "address",
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 }
             ],
             "name": "lockTo",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function",
-            "signature": "0xac3f05f4"
+            "signature": "0x29218710"
         },
         {
             "inputs": [
@@ -34700,6 +34720,27 @@
             "inputs": [
                 {
                     "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                }
+            ],
+            "name": "toBytes32",
+            "outputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "",
+                    "type": "bytes32"
+                }
+            ],
+            "stateMutability": "pure",
+            "type": "function",
+            "constant": true,
+            "signature": "0x78ad0369"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
                     "name": "asset",
                     "type": "address"
                 },
@@ -34755,8 +34796,7 @@
                 }
             ],
             "stateMutability": "nonpayable",
-            "type": "constructor",
-            "signature": "constructor"
+            "type": "constructor"
         },
         {
             "anonymous": false,
@@ -34783,6 +34823,32 @@
             "name": "Approval",
             "type": "event",
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint128",
+                    "name": "nextCashYield",
+                    "type": "uint128"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint128",
+                    "name": "nextCashYieldIndex",
+                    "type": "uint128"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "nextCashYieldStart",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetFutureYield",
+            "type": "event",
+            "signature": "0x251ac1e011d739fec76126545192770052c706a63b2aac90521becbaa159c418"
         },
         {
             "anonymous": false,
@@ -35190,6 +35256,21 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0xe7c97454"
+        },
+        {
+            "inputs": [],
+            "name": "initialized",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true,
+            "signature": "0x158ef93e"
         },
         {
             "inputs": [
@@ -35479,10 +35560,16 @@
                     "type": "address"
                 },
                 {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
                     "indexed": true,
-                    "internalType": "address",
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 },
                 {
                     "indexed": false,
@@ -35493,7 +35580,7 @@
             ],
             "name": "Lock",
             "type": "event",
-            "signature": "0xd6aba49fa5adb7dbc18ab12d057e77c75e5d4b345cf473c7514afbbd6f5fc626"
+            "signature": "0xc459acef3ffe957663bb49d644b20d0c790bcb41573893752a72ba6f023b9386"
         },
         {
             "anonymous": false,
@@ -35505,10 +35592,16 @@
                     "type": "address"
                 },
                 {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
                     "indexed": true,
-                    "internalType": "address",
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 },
                 {
                     "indexed": false,
@@ -35525,7 +35618,7 @@
             ],
             "name": "LockCash",
             "type": "event",
-            "signature": "0xe100221382bf5c3c3c6813f37ba19b1dd54b38d08a8755d30093f30fbc703a91"
+            "signature": "0x0ba767ef2faa3001dbd3344d5b427be12f2e090ae3dcbe2f0d0ecf2bf17a8a17"
         },
         {
             "anonymous": false,
@@ -35776,9 +35869,8 @@
             ],
             "name": "execTrxRequest",
             "outputs": [],
-            "stateMutability": "payable",
+            "stateMutability": "nonpayable",
             "type": "function",
-            "payable": true,
             "signature": "0x5f25fc12"
         },
         {
@@ -35917,9 +36009,14 @@
         {
             "inputs": [
                 {
-                    "internalType": "address",
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 }
             ],
             "name": "lockEthTo",
@@ -35927,7 +36024,7 @@
             "stateMutability": "payable",
             "type": "function",
             "payable": true,
-            "signature": "0x28a1b02e"
+            "signature": "0xcdf65c0b"
         },
         {
             "inputs": [
@@ -35942,16 +36039,21 @@
                     "type": "address"
                 },
                 {
-                    "internalType": "address",
+                    "internalType": "string",
+                    "name": "chain",
+                    "type": "string"
+                },
+                {
+                    "internalType": "bytes32",
                     "name": "recipient",
-                    "type": "address"
+                    "type": "bytes32"
                 }
             ],
             "name": "lockTo",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function",
-            "signature": "0xac3f05f4"
+            "signature": "0x29218710"
         },
         {
             "inputs": [
@@ -36016,6 +36118,27 @@
             "type": "function",
             "constant": true,
             "signature": "0x02c3bcbb"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                }
+            ],
+            "name": "toBytes32",
+            "outputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "",
+                    "type": "bytes32"
+                }
+            ],
+            "stateMutability": "pure",
+            "type": "function",
+            "constant": true,
+            "signature": "0x78ad0369"
         },
         {
             "inputs": [
@@ -36104,6 +36227,32 @@
             "name": "Approval",
             "type": "event",
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint128",
+                    "name": "nextCashYield",
+                    "type": "uint128"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint128",
+                    "name": "nextCashYieldIndex",
+                    "type": "uint128"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "nextCashYieldStart",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetFutureYield",
+            "type": "event",
+            "signature": "0x251ac1e011d739fec76126545192770052c706a63b2aac90521becbaa159c418"
         },
         {
             "anonymous": false,
@@ -36511,6 +36660,21 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0xe7c97454"
+        },
+        {
+            "inputs": [],
+            "name": "initialized",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true,
+            "signature": "0x158ef93e"
         },
         {
             "inputs": [
