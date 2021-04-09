@@ -146,7 +146,7 @@
             "address": "0x087e98B40f988E0E1D1de476b2b8d2271Ac84B33",
             "contract": "GovernorBravoDelegator",
             "name": "GovernorBravo"
-        },
+        }
     },
     "Timelock": {
         "Timelock": {
