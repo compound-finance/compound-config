@@ -25,6 +25,7 @@
         "Uniswap": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
         "uni": "0xc8f88977e21630cf93c02d02d9e8812ff0dfc37a",
         "GovernorAlpha": "0x0782ccc8912A177ac6b9287394e71dAacf779B83",
+        "GovernorBravo": "0x087e98B40f988E0E1D1de476b2b8d2271Ac84B33",
         "Pair_ETH_ZRX": "0x5c40A4596519EfEA94231E6346aeD20A7CF2B587",
         "Pair_COMP_ETH": "0xdA68B0BC70e177d82c4AA308654C79dc97bD8466",
         "Pair_DAI_ETH": "0x084375803b1661c40934dCc4E82B7d9A29c0Bc66",
@@ -78,6 +79,7 @@
         "Timelock": 9728469,
         "PriceData": 9728474,
         "GovernorAlpha": 9728489,
+        "GovernorBravo": 10006507,
         "Pair_ETH_ZRX": 9728497,
         "Pair_COMP_ETH": 9728502,
         "Pair_DAI_ETH": 9728509,
@@ -138,6 +140,13 @@
             "contract": "ComptrollerRopsten",
             "description": "Comptroller Description"
         }
+    },
+     "Governor": {
+        "GovernorBravo": {
+            "address": "0x087e98B40f988E0E1D1de476b2b8d2271Ac84B33",
+            "contract": "GovernorBravoDelegator",
+            "name": "GovernorBravo"
+        },
     },
     "Timelock": {
         "Timelock": {
