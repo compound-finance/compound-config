@@ -11626,6 +11626,38 @@
           "stateMutability": "nonpayable",
           "type": "function",
           "signature": "0x15373e3d"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "proposalId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "queue",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function",
+            "signature": "0xddf0b009"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "proposalId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "execute",
+            "outputs": [],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function",
+            "signature": "0xfe0d94c1"
         }
     ],
     "Pair_ETH_ZRX": [
