@@ -1,4 +1,988 @@
 {
+  "PriceFeed3": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "anchorToleranceMantissa_",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "anchorPeriod_",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig[]",
+          "name": "configs",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "anchorPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldTimestamp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTimestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "AnchorPriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FailoverActivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FailoverDeactivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "reporter",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "anchor",
+          "type": "uint256"
+        }
+      ],
+      "name": "PriceGuarded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "PriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldTimestamp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTimestamp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "UniswapWindowUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "acceptOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "activateFailover",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "anchorPeriod",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deactivateFailover",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ethBaseUnit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "expScale",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "i",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTokenConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "cToken",
+          "type": "address"
+        }
+      ],
+      "name": "getTokenConfigByCToken",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "reporter",
+          "type": "address"
+        }
+      ],
+      "name": "getTokenConfigByReporter",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "name": "getTokenConfigBySymbol",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getTokenConfigBySymbolHash",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "underlying",
+          "type": "address"
+        }
+      ],
+      "name": "getTokenConfigByUnderlying",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "underlying",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "symbolHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "baseUnit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum UniswapConfig.PriceSource",
+              "name": "priceSource",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fixedPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapMarket",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "reporter",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reporterMultiplier",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isUniswapReversed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniswapConfig.TokenConfig",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "cToken",
+          "type": "address"
+        }
+      ],
+      "name": "getUnderlyingPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lowerBoundAnchorRatio",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxTokens",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "newObservations",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "acc",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numTokens",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "oldObservations",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "acc",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "symbolHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "pokeFailedOverPrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "name": "price",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "prices",
+      "outputs": [
+        {
+          "internalType": "uint248",
+          "name": "price",
+          "type": "uint248"
+        },
+        {
+          "internalType": "bool",
+          "name": "failoverActive",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "upperBoundAnchorRatio",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "currentAnswer",
+          "type": "int256"
+        }
+      ],
+      "name": "validate",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "valid",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
   "cTUSD": [
     {
       "inputs": [
@@ -1465,835 +2449,795 @@
   ],
   "TUSD": [
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"owner",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
         },
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         }
       ],
-      "name":"Approval",
-      "type":"event"
+      "name": "Approval",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"account",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "internalType":"bool",
-          "name":"isBlacklisted",
-          "type":"bool"
+          "indexed": false,
+          "internalType": "bool",
+          "name": "isBlacklisted",
+          "type": "bool"
         }
       ],
-      "name":"Blacklisted",
-      "type":"event"
+      "name": "Blacklisted",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"burner",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "burner",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         }
       ],
-      "name":"Burn",
-      "type":"event"
+      "name": "Burn",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"to",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         }
       ],
-      "name":"Mint",
-      "type":"event"
+      "name": "Mint",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"previousOwner",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
         },
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"newOwner",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name":"OwnershipTransferred",
-      "type":"event"
+      "name": "OwnershipTransferred",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"newMin",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newMin",
+          "type": "uint256"
         },
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"newMax",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newMax",
+          "type": "uint256"
         }
       ],
-      "name":"SetBurnBounds",
-      "type":"event"
+      "name": "SetBurnBounds",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"from",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
         },
         {
-          "indexed":true,
-          "internalType":"address",
-          "name":"to",
-          "type":"address"
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         }
       ],
-      "name":"Transfer",
-      "type":"event"
+      "name": "Transfer",
+      "type": "event"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"owner",
-          "type":"address"
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
         },
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         }
       ],
-      "name":"allowance",
-      "outputs":[
+      "name": "allowance",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"amount",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
         }
       ],
-      "name":"approve",
-      "outputs":[
+      "name": "approve",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"account",
-          "type":"address"
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         }
       ],
-      "name":"balanceOf",
-      "outputs":[
+      "name": "balanceOf",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"uint256",
-          "name":"amount",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
         }
       ],
-      "name":"burn",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"burnMax",
-      "outputs":[
+      "inputs": [],
+      "name": "burnMax",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"burnMin",
-      "outputs":[
+      "inputs": [],
+      "name": "burnMin",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"",
-          "type":"address"
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
-      "name":"canBurn",
-      "outputs":[
+      "name": "canBurn",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"claimOwnership",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"decimals",
-      "outputs":[
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
         {
-          "internalType":"uint8",
-          "name":"",
-          "type":"uint8"
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
         }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"subtractedValue",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "subtractedValue",
+          "type": "uint256"
         }
       ],
-      "name":"decreaseAllowance",
-      "outputs":[
+      "name": "decreaseAllowance",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"owner",
-          "type":"address"
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
         },
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         }
       ],
-      "name":"delegateAllowance",
-      "outputs":[
+      "name": "delegateAllowance",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         },
         {
-          "internalType":"address",
-          "name":"origSender",
-          "type":"address"
+          "internalType": "address",
+          "name": "origSender",
+          "type": "address"
         }
       ],
-      "name":"delegateApprove",
-      "outputs":[
+      "name": "delegateApprove",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"who",
-          "type":"address"
+          "internalType": "address",
+          "name": "who",
+          "type": "address"
         }
       ],
-      "name":"delegateBalanceOf",
-      "outputs":[
+      "name": "delegateBalanceOf",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"subtractedValue",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "subtractedValue",
+          "type": "uint256"
         },
         {
-          "internalType":"address",
-          "name":"origSender",
-          "type":"address"
+          "internalType": "address",
+          "name": "origSender",
+          "type": "address"
         }
       ],
-      "name":"delegateDecreaseApproval",
-      "outputs":[
+      "name": "delegateDecreaseApproval",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"addedValue",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "addedValue",
+          "type": "uint256"
         },
         {
-          "internalType":"address",
-          "name":"origSender",
-          "type":"address"
+          "internalType": "address",
+          "name": "origSender",
+          "type": "address"
         }
       ],
-      "name":"delegateIncreaseApproval",
-      "outputs":[
+      "name": "delegateIncreaseApproval",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"delegateTotalSupply",
-      "outputs":[
+      "inputs": [],
+      "name": "delegateTotalSupply",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"to",
-          "type":"address"
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         },
         {
-          "internalType":"address",
-          "name":"origSender",
-          "type":"address"
+          "internalType": "address",
+          "name": "origSender",
+          "type": "address"
         }
       ],
-      "name":"delegateTransfer",
-      "outputs":[
+      "name": "delegateTransfer",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"from",
-          "type":"address"
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
         },
         {
-          "internalType":"address",
-          "name":"to",
-          "type":"address"
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"value",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         },
         {
-          "internalType":"address",
-          "name":"origSender",
-          "type":"address"
+          "internalType": "address",
+          "name": "origSender",
+          "type": "address"
         }
       ],
-      "name":"delegateTransferFrom",
-      "outputs":[
+      "name": "delegateTransferFrom",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"spender",
-          "type":"address"
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"addedValue",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "addedValue",
+          "type": "uint256"
         }
       ],
-      "name":"increaseAllowance",
-      "outputs":[
+      "name": "increaseAllowance",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"account",
-          "type":"address"
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"amount",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
         }
       ],
-      "name":"mint",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"name",
-      "outputs":[
+      "inputs": [],
+      "name": "name",
+      "outputs": [
         {
-          "internalType":"string",
-          "name":"",
-          "type":"string"
+          "internalType": "string",
+          "name": "",
+          "type": "string"
         }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"owner",
-      "outputs":[
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
         {
-          "internalType":"address",
-          "name":"",
-          "type":"address"
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"pendingOwner",
-      "outputs":[
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
         {
-          "internalType":"address",
-          "name":"",
-          "type":"address"
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address payable",
-          "name":"_to",
-          "type":"address"
+          "internalType": "address payable",
+          "name": "_to",
+          "type": "address"
         }
       ],
-      "name":"reclaimEther",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "reclaimEther",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"contract IERC20",
-          "name":"token",
-          "type":"address"
+          "internalType": "contract IERC20",
+          "name": "token",
+          "type": "address"
         },
         {
-          "internalType":"address",
-          "name":"_to",
-          "type":"address"
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
         }
       ],
-      "name":"reclaimToken",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "reclaimToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"rounding",
-      "outputs":[
+      "inputs": [],
+      "name": "rounding",
+      "outputs": [
         {
-          "internalType":"uint8",
-          "name":"",
-          "type":"uint8"
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
         }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"account",
-          "type":"address"
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         },
         {
-          "internalType":"bool",
-          "name":"_isBlacklisted",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "_isBlacklisted",
+          "type": "bool"
         }
       ],
-      "name":"setBlacklisted",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "setBlacklisted",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"uint256",
-          "name":"_min",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "_min",
+          "type": "uint256"
         },
         {
-          "internalType":"uint256",
-          "name":"_max",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "_max",
+          "type": "uint256"
         }
       ],
-      "name":"setBurnBounds",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "setBurnBounds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"account",
-          "type":"address"
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         },
         {
-          "internalType":"bool",
-          "name":"_canBurn",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "_canBurn",
+          "type": "bool"
         }
       ],
-      "name":"setCanBurn",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "setCanBurn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"symbol",
-      "outputs":[
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
         {
-          "internalType":"string",
-          "name":"",
-          "type":"string"
+          "internalType": "string",
+          "name": "",
+          "type": "string"
         }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "name":"totalSupply",
-      "outputs":[
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
         {
-          "internalType":"uint256",
-          "name":"",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"recipient",
-          "type":"address"
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"amount",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
         }
       ],
-      "name":"transfer",
-      "outputs":[
+      "name": "transfer",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"sender",
-          "type":"address"
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
         },
         {
-          "internalType":"address",
-          "name":"recipient",
-          "type":"address"
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
         },
         {
-          "internalType":"uint256",
-          "name":"amount",
-          "type":"uint256"
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
         }
       ],
-      "name":"transferFrom",
-      "outputs":[
+      "name": "transferFrom",
+      "outputs": [
         {
-          "internalType":"bool",
-          "name":"",
-          "type":"bool"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "inputs":[
+      "inputs": [
         {
-          "internalType":"address",
-          "name":"newOwner",
-          "type":"address"
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name":"transferOwnership",
-      "outputs":[
-        
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
   "cLINK": [
@@ -3777,313 +4721,303 @@
   ],
   "LINK": [
     {
-      "constant":true,
-      "inputs":[
-        
-      ],
-      "name":"name",
-      "outputs":[
+      "constant": true,
+      "inputs": [],
+      "name": "name",
+      "outputs": [
         {
-          "name":"",
-          "type":"string"
+          "name": "",
+          "type": "string"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_spender",
-          "type":"address"
+          "name": "_spender",
+          "type": "address"
         },
         {
-          "name":"_value",
-          "type":"uint256"
+          "name": "_value",
+          "type": "uint256"
         }
       ],
-      "name":"approve",
-      "outputs":[
+      "name": "approve",
+      "outputs": [
         {
-          "name":"",
-          "type":"bool"
+          "name": "",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":true,
-      "inputs":[
-        
-      ],
-      "name":"totalSupply",
-      "outputs":[
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
         {
-          "name":"",
-          "type":"uint256"
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_from",
-          "type":"address"
+          "name": "_from",
+          "type": "address"
         },
         {
-          "name":"_to",
-          "type":"address"
+          "name": "_to",
+          "type": "address"
         },
         {
-          "name":"_value",
-          "type":"uint256"
+          "name": "_value",
+          "type": "uint256"
         }
       ],
-      "name":"transferFrom",
-      "outputs":[
+      "name": "transferFrom",
+      "outputs": [
         {
-          "name":"",
-          "type":"bool"
+          "name": "",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":true,
-      "inputs":[
-        
-      ],
-      "name":"decimals",
-      "outputs":[
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
         {
-          "name":"",
-          "type":"uint8"
+          "name": "",
+          "type": "uint8"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_to",
-          "type":"address"
+          "name": "_to",
+          "type": "address"
         },
         {
-          "name":"_value",
-          "type":"uint256"
+          "name": "_value",
+          "type": "uint256"
         },
         {
-          "name":"_data",
-          "type":"bytes"
+          "name": "_data",
+          "type": "bytes"
         }
       ],
-      "name":"transferAndCall",
-      "outputs":[
+      "name": "transferAndCall",
+      "outputs": [
         {
-          "name":"success",
-          "type":"bool"
+          "name": "success",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_spender",
-          "type":"address"
+          "name": "_spender",
+          "type": "address"
         },
         {
-          "name":"_subtractedValue",
-          "type":"uint256"
+          "name": "_subtractedValue",
+          "type": "uint256"
         }
       ],
-      "name":"decreaseApproval",
-      "outputs":[
+      "name": "decreaseApproval",
+      "outputs": [
         {
-          "name":"success",
-          "type":"bool"
+          "name": "success",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":true,
-      "inputs":[
+      "constant": true,
+      "inputs": [
         {
-          "name":"_owner",
-          "type":"address"
+          "name": "_owner",
+          "type": "address"
         }
       ],
-      "name":"balanceOf",
-      "outputs":[
+      "name": "balanceOf",
+      "outputs": [
         {
-          "name":"balance",
-          "type":"uint256"
+          "name": "balance",
+          "type": "uint256"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "constant":true,
-      "inputs":[
-        
-      ],
-      "name":"symbol",
-      "outputs":[
+      "constant": true,
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
         {
-          "name":"",
-          "type":"string"
+          "name": "",
+          "type": "string"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_to",
-          "type":"address"
+          "name": "_to",
+          "type": "address"
         },
         {
-          "name":"_value",
-          "type":"uint256"
+          "name": "_value",
+          "type": "uint256"
         }
       ],
-      "name":"transfer",
-      "outputs":[
+      "name": "transfer",
+      "outputs": [
         {
-          "name":"success",
-          "type":"bool"
+          "name": "success",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":false,
-      "inputs":[
+      "constant": false,
+      "inputs": [
         {
-          "name":"_spender",
-          "type":"address"
+          "name": "_spender",
+          "type": "address"
         },
         {
-          "name":"_addedValue",
-          "type":"uint256"
+          "name": "_addedValue",
+          "type": "uint256"
         }
       ],
-      "name":"increaseApproval",
-      "outputs":[
+      "name": "increaseApproval",
+      "outputs": [
         {
-          "name":"success",
-          "type":"bool"
+          "name": "success",
+          "type": "bool"
         }
       ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant":true,
-      "inputs":[
+      "constant": true,
+      "inputs": [
         {
-          "name":"_owner",
-          "type":"address"
+          "name": "_owner",
+          "type": "address"
         },
         {
-          "name":"_spender",
-          "type":"address"
+          "name": "_spender",
+          "type": "address"
         }
       ],
-      "name":"allowance",
-      "outputs":[
+      "name": "allowance",
+      "outputs": [
         {
-          "name":"remaining",
-          "type":"uint256"
+          "name": "remaining",
+          "type": "uint256"
         }
       ],
-      "payable":false,
-      "stateMutability":"view",
-      "type":"function"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "inputs":[
-        
-      ],
-      "payable":false,
-      "stateMutability":"nonpayable",
-      "type":"constructor"
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "name":"from",
-          "type":"address"
+          "indexed": true,
+          "name": "from",
+          "type": "address"
         },
         {
-          "indexed":true,
-          "name":"to",
-          "type":"address"
+          "indexed": true,
+          "name": "to",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
         },
         {
-          "indexed":false,
-          "name":"data",
-          "type":"bytes"
+          "indexed": false,
+          "name": "data",
+          "type": "bytes"
         }
       ],
-      "name":"Transfer",
-      "type":"event"
+      "name": "Transfer",
+      "type": "event"
     },
     {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
         {
-          "indexed":true,
-          "name":"owner",
-          "type":"address"
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
         },
         {
-          "indexed":true,
-          "name":"spender",
-          "type":"address"
+          "indexed": true,
+          "name": "spender",
+          "type": "address"
         },
         {
-          "indexed":false,
-          "name":"value",
-          "type":"uint256"
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
         }
       ],
-      "name":"Approval",
-      "type":"event"
+      "name": "Approval",
+      "type": "event"
     }
   ],
   "GovernorBravo": [
@@ -16087,874 +17021,874 @@
     }
   ],
   "CompoundLens": [
+    {
+      "constant": false,
+      "inputs": [
         {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken",
-              "name": "cToken",
-              "type": "address"
-            },
-            {
-              "internalType": "address payable",
-              "name": "account",
-              "type": "address"
-            }
-          ],
-          "name": "cTokenBalances",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "balanceOf",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowBalanceCurrent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "balanceOfUnderlying",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "tokenBalance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "tokenAllowance",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenBalances",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
+          "internalType": "contract CToken",
+          "name": "cToken",
+          "type": "address"
         },
         {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken[]",
-              "name": "cTokens",
-              "type": "address[]"
-            },
-            {
-              "internalType": "address payable",
-              "name": "account",
-              "type": "address"
-            }
-          ],
-          "name": "cTokenBalancesAll",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "balanceOf",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowBalanceCurrent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "balanceOfUnderlying",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "tokenBalance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "tokenAllowance",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenBalances[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken",
-              "name": "cToken",
-              "type": "address"
-            }
-          ],
-          "name": "cTokenMetadata",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "exchangeRateCurrent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "supplyRatePerBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowRatePerBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "reserveFactorMantissa",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalBorrows",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalReserves",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalCash",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "isListed",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "collateralFactorMantissa",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "underlyingAssetAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "cTokenDecimals",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "underlyingDecimals",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "compSpeed",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowCap",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenMetadata",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken[]",
-              "name": "cTokens",
-              "type": "address[]"
-            }
-          ],
-          "name": "cTokenMetadataAll",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "exchangeRateCurrent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "supplyRatePerBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowRatePerBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "reserveFactorMantissa",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalBorrows",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalReserves",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalCash",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "isListed",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "collateralFactorMantissa",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "underlyingAssetAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "cTokenDecimals",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "underlyingDecimals",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "compSpeed",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "borrowCap",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenMetadata[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken",
-              "name": "cToken",
-              "type": "address"
-            }
-          ],
-          "name": "cTokenUnderlyingPrice",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "underlyingPrice",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenUnderlyingPrice",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract CToken[]",
-              "name": "cTokens",
-              "type": "address[]"
-            }
-          ],
-          "name": "cTokenUnderlyingPriceAll",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "address",
-                  "name": "cToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "underlyingPrice",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CTokenUnderlyingPrice[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract ComptrollerLensInterface",
-              "name": "comptroller",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "account",
-              "type": "address"
-            }
-          ],
-          "name": "getAccountLimits",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "contract CToken[]",
-                  "name": "markets",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "liquidity",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "shortfall",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.AccountLimits",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract Comp",
-              "name": "comp",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "account",
-              "type": "address"
-            }
-          ],
-          "name": "getCompBalanceMetadata",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "balance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "votes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "delegate",
-                  "type": "address"
-                }
-              ],
-              "internalType": "struct CompoundLens.CompBalanceMetadata",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "constant": false,
-          "inputs": [
-            {
-              "internalType": "contract Comp",
-              "name": "comp",
-              "type": "address"
-            },
-            {
-              "internalType": "contract ComptrollerLensInterface",
-              "name": "comptroller",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "account",
-              "type": "address"
-            }
-          ],
-          "name": "getCompBalanceMetadataExt",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "balance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "votes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "delegate",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "allocated",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CompBalanceMetadataExt",
-              "name": "",
-              "type": "tuple"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract Comp",
-              "name": "comp",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "account",
-              "type": "address"
-            },
-            {
-              "internalType": "uint32[]",
-              "name": "blockNumbers",
-              "type": "uint32[]"
-            }
-          ],
-          "name": "getCompVotes",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "blockNumber",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "votes",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct CompoundLens.CompVotes[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract GovernorBravoInterface",
-              "name": "governor",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256[]",
-              "name": "proposalIds",
-              "type": "uint256[]"
-            }
-          ],
-          "name": "getGovBravoProposals",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "proposalId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "proposer",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "eta",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address[]",
-                  "name": "targets",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "values",
-                  "type": "uint256[]"
-                },
-                {
-                  "internalType": "string[]",
-                  "name": "signatures",
-                  "type": "string[]"
-                },
-                {
-                  "internalType": "bytes[]",
-                  "name": "calldatas",
-                  "type": "bytes[]"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "endBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "forVotes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "againstVotes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "abstainVotes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "canceled",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "executed",
-                  "type": "bool"
-                }
-              ],
-              "internalType": "struct CompoundLens.GovBravoProposal[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract GovernorBravoInterface",
-              "name": "governor",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "voter",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256[]",
-              "name": "proposalIds",
-              "type": "uint256[]"
-            }
-          ],
-          "name": "getGovBravoReceipts",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "proposalId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "hasVoted",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "uint8",
-                  "name": "support",
-                  "type": "uint8"
-                },
-                {
-                  "internalType": "uint96",
-                  "name": "votes",
-                  "type": "uint96"
-                }
-              ],
-              "internalType": "struct CompoundLens.GovBravoReceipt[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract GovernorAlpha",
-              "name": "governor",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256[]",
-              "name": "proposalIds",
-              "type": "uint256[]"
-            }
-          ],
-          "name": "getGovProposals",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "proposalId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "proposer",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "eta",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address[]",
-                  "name": "targets",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "values",
-                  "type": "uint256[]"
-                },
-                {
-                  "internalType": "string[]",
-                  "name": "signatures",
-                  "type": "string[]"
-                },
-                {
-                  "internalType": "bytes[]",
-                  "name": "calldatas",
-                  "type": "bytes[]"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "endBlock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "forVotes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "againstVotes",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "canceled",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "executed",
-                  "type": "bool"
-                }
-              ],
-              "internalType": "struct CompoundLens.GovProposal[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "constant": true,
-          "inputs": [
-            {
-              "internalType": "contract GovernorAlpha",
-              "name": "governor",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "voter",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256[]",
-              "name": "proposalIds",
-              "type": "uint256[]"
-            }
-          ],
-          "name": "getGovReceipts",
-          "outputs": [
-            {
-              "components": [
-                {
-                  "internalType": "uint256",
-                  "name": "proposalId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "hasVoted",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "support",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "uint96",
-                  "name": "votes",
-                  "type": "uint96"
-                }
-              ],
-              "internalType": "struct CompoundLens.GovReceipt[]",
-              "name": "",
-              "type": "tuple[]"
-            }
-          ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
+          "internalType": "address payable",
+          "name": "account",
+          "type": "address"
         }
-    ],
+      ],
+      "name": "cTokenBalances",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOf",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowBalanceCurrent",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOfUnderlying",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenBalance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenAllowance",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenBalances",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract CToken[]",
+          "name": "cTokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address payable",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "cTokenBalancesAll",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOf",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowBalanceCurrent",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOfUnderlying",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenBalance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenAllowance",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenBalances[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract CToken",
+          "name": "cToken",
+          "type": "address"
+        }
+      ],
+      "name": "cTokenMetadata",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "exchangeRateCurrent",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "supplyRatePerBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowRatePerBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reserveFactorMantissa",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalBorrows",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalReserves",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalSupply",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalCash",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isListed",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "collateralFactorMantissa",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "underlyingAssetAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cTokenDecimals",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "underlyingDecimals",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "compSpeed",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowCap",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenMetadata",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract CToken[]",
+          "name": "cTokens",
+          "type": "address[]"
+        }
+      ],
+      "name": "cTokenMetadataAll",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "exchangeRateCurrent",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "supplyRatePerBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowRatePerBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reserveFactorMantissa",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalBorrows",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalReserves",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalSupply",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalCash",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isListed",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "collateralFactorMantissa",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "underlyingAssetAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cTokenDecimals",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "underlyingDecimals",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "compSpeed",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "borrowCap",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenMetadata[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract CToken",
+          "name": "cToken",
+          "type": "address"
+        }
+      ],
+      "name": "cTokenUnderlyingPrice",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "underlyingPrice",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenUnderlyingPrice",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract CToken[]",
+          "name": "cTokens",
+          "type": "address[]"
+        }
+      ],
+      "name": "cTokenUnderlyingPriceAll",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "underlyingPrice",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CTokenUnderlyingPrice[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract ComptrollerLensInterface",
+          "name": "comptroller",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getAccountLimits",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "contract CToken[]",
+              "name": "markets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "liquidity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "shortfall",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.AccountLimits",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract Comp",
+          "name": "comp",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getCompBalanceMetadata",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "balance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "votes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "delegate",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct CompoundLens.CompBalanceMetadata",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "contract Comp",
+          "name": "comp",
+          "type": "address"
+        },
+        {
+          "internalType": "contract ComptrollerLensInterface",
+          "name": "comptroller",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getCompBalanceMetadataExt",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "balance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "votes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "delegate",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "allocated",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CompBalanceMetadataExt",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract Comp",
+          "name": "comp",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32[]",
+          "name": "blockNumbers",
+          "type": "uint32[]"
+        }
+      ],
+      "name": "getCompVotes",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "blockNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "votes",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct CompoundLens.CompVotes[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract GovernorBravoInterface",
+          "name": "governor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "proposalIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "getGovBravoProposals",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "proposer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "eta",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address[]",
+              "name": "targets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "values",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "string[]",
+              "name": "signatures",
+              "type": "string[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "calldatas",
+              "type": "bytes[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "forVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "againstVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "abstainVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "canceled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "executed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct CompoundLens.GovBravoProposal[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract GovernorBravoInterface",
+          "name": "governor",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "proposalIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "getGovBravoReceipts",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "hasVoted",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "support",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint96",
+              "name": "votes",
+              "type": "uint96"
+            }
+          ],
+          "internalType": "struct CompoundLens.GovBravoReceipt[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract GovernorAlpha",
+          "name": "governor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "proposalIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "getGovProposals",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "proposer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "eta",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address[]",
+              "name": "targets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "values",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "string[]",
+              "name": "signatures",
+              "type": "string[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "calldatas",
+              "type": "bytes[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "forVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "againstVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "canceled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "executed",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct CompoundLens.GovProposal[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract GovernorAlpha",
+          "name": "governor",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "proposalIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "getGovReceipts",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "hasVoted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "support",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint96",
+              "name": "votes",
+              "type": "uint96"
+            }
+          ],
+          "internalType": "struct CompoundLens.GovReceipt[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
   "DAI": [
     {
       "anonymous": false,

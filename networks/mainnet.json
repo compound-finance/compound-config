@@ -1,5 +1,6 @@
 {
   "Contracts": {
+    "PriceFeed3": "0x841616a5cba946cf415efe8a326a621a794d0f97",
     "cTUSDDelegate": "0xce526fa199d2f772abbc5b40b3284cdab1b8e6de",
     "cTUSD": "0x12392f67bdf24fae0af363c24ac620a2f67dad86",
     "cLINKDelegate": "0x24aa720906378bb8364228bddb8cabbc1f6fe1ba",
@@ -83,6 +84,7 @@
     "IRM_UNI_Updateable": "0xd88b94128ff2b8cf2d7886cd1c1e46757418ca2a"
   },
   "Blocks": {
+    "PriceFeed3": 12547650,
     "cTUSDDelegate": 11008130,
     "cTUSD": 11008385,
     "cLINKDelegate": 11960638,
@@ -146,6 +148,10 @@
   "PriceFeed": {
     "description": "Open Oracle Uniswap Anchored View + UNI",
     "address": "0x922018674c12a7f0d394ebeef9b58f186cde13c1"
+  },
+  "PriceFeed3": {
+    "address": "0x841616a5cba946cf415efe8a326a621a794d0f97",
+    "description": "ChainLink + Uniswap Anchored View"
   },
   "PriceOracleProxy": {
     "description": "Price Oracle Proxy",
