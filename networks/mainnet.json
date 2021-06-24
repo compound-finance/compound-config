@@ -1,6 +1,6 @@
 {
   "Contracts": {
-    "PriceFeed3": "0x841616a5cba946cf415efe8a326a621a794d0f97",
+    "PriceFeed": "0x841616a5cba946cf415efe8a326a621a794d0f97",
     "cTUSDDelegate": "0xce526fa199d2f772abbc5b40b3284cdab1b8e6de",
     "cTUSD": "0x12392f67bdf24fae0af363c24ac620a2f67dad86",
     "cLINKDelegate": "0x24aa720906378bb8364228bddb8cabbc1f6fe1ba",
@@ -63,7 +63,7 @@
     "cWBTC": "0xC11b1268C1A384e55C48c2391d8d480264A3A7F4",
     "USDC": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     "PriceData": "0xc629c26dced4277419cde234012f8160a0278a79",
-    "PriceFeed": "0x4007b71e01424b2314c020fb0344b03a7c499e1a",
+    "PriceFeed": "0x841616a5cba946cf415efe8a326a621a794d0f97",
     "KNC": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
     "LINK": "0x514910771af9ca656af840dff83e8264ecf986ca",
     "TUSD": "0x0000000000085d4780B73119b644AE5ecd22b376",
@@ -77,14 +77,12 @@
     "Pair_REP_ETH": "0xec2D2240D02A8cf63C3fA0B7d2C5a3169a319496",
     "Pair_BAT_ETH": "0xb6909b960dbbe7392d405429eb2b3649752b4838",
     "Pair_ETH_USDC": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
-    "PriceFeedPoster": "0x83563ba7f1b093aae57fe876f8d870f8a1508886",
     "CrowdProposalFactory": "0x54a06047087927D9B0fb21c1cf0ebd792764dDB8",
     "IRM_USDT_Updateable": "0xFB564da37B41b2F6B6EDcc3e56FbF523bD9F2012",
     "IRM_USDC_Updateable": "0xD8EC56013EA119E7181d231E5048f90fBbe753c0",
     "IRM_UNI_Updateable": "0xd88b94128ff2b8cf2d7886cd1c1e46757418ca2a"
   },
   "Blocks": {
-    "PriceFeed3": 12547650,
     "cTUSDDelegate": 11008130,
     "cTUSD": 11008385,
     "cLINKDelegate": 11960638,
@@ -135,7 +133,7 @@
     "cZRX": 7710733,
     "cWBTC": 8163813,
     "PriceData": 10551018,
-    "PriceFeed": 10921522,
+    "PriceFeed": 12547650,
     "CrowdProposalFactory": 12137801,
     "IRM_USDT_Updateable": 10609555,
     "IRM_USDC_Updateable": 10810554,
@@ -146,12 +144,8 @@
     "address": "0xc629c26dced4277419cde234012f8160a0278a79"
   },
   "PriceFeed": {
-    "description": "Open Oracle Uniswap Anchored View + UNI",
-    "address": "0x922018674c12a7f0d394ebeef9b58f186cde13c1"
-  },
-  "PriceFeed3": {
-    "address": "0x841616a5cba946cf415efe8a326a621a794d0f97",
-    "description": "ChainLink + Uniswap Anchored View"
+    "description": "ChainLink + Uniswap Anchored View",
+    "address": "0x841616a5cba946cf415efe8a326a621a794d0f97"
   },
   "PriceOracleProxy": {
     "description": "Price Oracle Proxy",
