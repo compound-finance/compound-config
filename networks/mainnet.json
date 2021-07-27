@@ -1,6 +1,5 @@
 {
   "Contracts": {
-    "PriceFeed": "0x841616a5cba946cf415efe8a326a621a794d0f97",
     "cTUSDDelegate": "0xce526fa199d2f772abbc5b40b3284cdab1b8e6de",
     "cTUSD": "0x12392f67bdf24fae0af363c24ac620a2f67dad86",
     "cLINKDelegate": "0x24aa720906378bb8364228bddb8cabbc1f6fe1ba",
@@ -63,10 +62,13 @@
     "cWBTC": "0xC11b1268C1A384e55C48c2391d8d480264A3A7F4",
     "USDC": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     "PriceData": "0xc629c26dced4277419cde234012f8160a0278a79",
-    "PriceFeed": "0x841616a5cba946cf415efe8a326a621a794d0f97",
+    "PriceFeed": "0x6D2299C48a8dD07a872FDd0F8233924872Ad1071",
     "KNC": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
     "LINK": "0x514910771af9ca656af840dff83e8264ecf986ca",
     "TUSD": "0x0000000000085d4780B73119b644AE5ecd22b376",
+    "cMKR": "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b",
+    "cMKRDelegate": "0xa035b9e130f2b1aedc733eefb1c67ba4c503491f",
+    "MKR": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
     "Uniswap": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
     "Pair_ETH_ZRX": "0xc6f348dd3b91a56d117ec0071c1e9b83c0996de4",
     "Pair_ETH_KNC": "0xf49c43ae0faf37217bdcb00df478cf793edd6687",
@@ -132,8 +134,9 @@
     "Base200bps_Slope222bps_Kink90_Jump40": 8983555,
     "cZRX": 7710733,
     "cWBTC": 8163813,
+    "cMKR": 12836064,
     "PriceData": 10551018,
-    "PriceFeed": 12547650,
+    "PriceFeed": 12864414,
     "CrowdProposalFactory": 12137801,
     "IRM_USDT_Updateable": 10609555,
     "IRM_USDC_Updateable": 10810554,
@@ -145,7 +148,7 @@
   },
   "PriceFeed": {
     "description": "ChainLink + Uniswap Anchored View",
-    "address": "0x841616a5cba946cf415efe8a326a621a794d0f97"
+    "address": "0x6D2299C48a8dD07a872FDd0F8233924872Ad1071"
   },
   "PriceOracleProxy": {
     "description": "Price Oracle Proxy",
@@ -379,6 +382,13 @@
       "decimals": 18,
       "address": "0x0000000000085d4780B73119b644AE5ecd22b376",
       "contract": "TrueUSD"
+    },
+    "MKR": {
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18,
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "contract": "Maker"
     }
   },
   "CTokenDelegate": {
@@ -416,6 +426,11 @@
       "address": "0x338f7e5d19d9953b76dd81446b142c2d9fe03482",
       "contract": "CCompLikeDelegate",
       "description": "Standard CUni Delegate"
+    },
+    "cMKRDelegate": {
+      "address": "0xa035b9e130f2b1aedc733eefb1c67ba4c503491f",
+      "contract": "CErc20Delegate",
+      "description": "Standard CErc20 Delegate"
     }
   },
   "cTokens": {
@@ -546,6 +561,15 @@
       "contract": "CErc20Delegator",
       "initial_exchange_rate_mantissa": "200000000000000000000000000",
       "address": "0x35a18000230da775cac24873d00ff85bccded550"
+    },
+    "cMKR": {
+      "name": "Compound Maker",
+      "symbol": "cMKR",
+      "decimals": 8,
+      "underlying": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "contract": "CErc20Delegator",
+      "initial_exchange_rate_mantissa": "200000000000000000000000000",
+      "address": "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b"
     }
   },
   "InterestRateModel": {
