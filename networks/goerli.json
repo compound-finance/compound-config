@@ -32,6 +32,10 @@
     "cZRX": "0xA253295eC2157B8b69C44b2cb35360016DAa25b1",
     "cWBTC": "0x6CE27497A64fFFb5517AA4aeE908b1E7EB63B9fF",
     "USDC": "0xD87Ba7A50B2E7E660f678A895E4B72E7CB4CCd9C",
+    "CASH": "0x0E01460f00C6B0b66A44D7cF1406Cb2150B718fC",
+    "CashImpl": "0x291ece70f3c5f411246a7eb5593255394b77f014",
+    "Starport": "0xcE43D3D6F0829481d9701fB8639979280a59dC69",
+    "StarportImpl": "0xee8fb6d428da2cc08da4a1c4fc88f8eeda7d1594",
     "ETH": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
   },
   "Blocks": {
@@ -162,6 +166,13 @@
       "symbol": "ETH",
       "decimals": 18,
       "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+    },
+    "CASH": {
+      "contract": "CashToken",
+      "symbol": "CASH",
+      "name": "Compound CASH Token",
+      "decimals": 6,
+      "address": "0x0E01460f00C6B0b66A44D7cF1406Cb2150B718fC"
     },
     "ZRX": {
       "description": "Standard",
