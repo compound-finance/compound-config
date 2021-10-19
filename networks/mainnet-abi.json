@@ -1,5 +1,4 @@
 {
-
     "AAVE": [
         {
             "anonymous": false,
@@ -149,7 +148,6 @@
             "type": "function"
         }
     ],
-
     "cAAVE": [
         {
             "inputs": [
@@ -1644,7 +1642,6 @@
             "type": "function"
         }
     ],
-
     "SUSHI": [
         {
             "anonymous": false,
@@ -2243,7 +2240,6 @@
             "type": "function"
         }
     ],
-
     "cSUSHI": [
         {
             "inputs": [
@@ -3738,7 +3734,6 @@
             "type": "function"
         }
     ],
-
     "YFI": [
         {
             "inputs": [],
@@ -4140,7 +4135,6 @@
             "type": "function"
         }
     ],
-
     "cYFI": [
         {
             "inputs": [
@@ -5635,7 +5629,6 @@
             "type": "function"
         }
     ],
-
     "cMKR": [
         {
             "inputs": [
@@ -7100,7 +7093,6 @@
             "type": "function"
         }
     ],
-
     "MKR": [
         {
             "constant": true,
@@ -7667,7 +7659,6 @@
             "type": "event"
         }
     ],
-
     "cTUSD": [
         {
             "inputs": [
@@ -9132,7 +9123,6 @@
             "type": "function"
         }
     ],
-
     "TUSD": [
         {
             "anonymous": false,
@@ -9926,7 +9916,6 @@
             "type": "function"
         }
     ],
-
     "cLINK": [
         {
             "inputs": [
@@ -11406,7 +11395,6 @@
             "type": "function"
         }
     ],
-
     "LINK": [
         {
             "constant": true,
@@ -11708,7 +11696,6 @@
             "type": "event"
         }
     ],
-
     "GovernorBravo": [
         {
             "inputs": [
@@ -13119,7 +13106,6 @@
             "type": "function"
         }
     ],
-
     "cWBTC2": [
         {
             "inputs": [
@@ -14599,7 +14585,6 @@
             "type": "function"
         }
     ],
-
     "wbtc2_irm": [
         {
             "inputs": [
@@ -14898,7 +14883,6 @@
             "type": "function"
         }
     ],
-
     "cCOMP": [
         {
             "inputs": [
@@ -16363,7 +16347,6 @@
             "type": "function"
         }
     ],
-
     "IRM_COMP_Updateable": [
         {
             "inputs": [
@@ -16662,7 +16645,6 @@
             "type": "function"
         }
     ],
-
     "cUSDC": [
         {
             "constant": true,
@@ -17898,7 +17880,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "StandardInterestRateModel": [
         {
             "anonymous": false,
@@ -17985,7 +17966,6 @@
             "type": "function"
         }
     ],
-
     "Migrations": [
         {
             "constant": true,
@@ -18050,7 +18030,6 @@
             "type": "function"
         }
     ],
-
     "PriceOracle": [
         {
             "constant": true,
@@ -18603,7 +18582,6 @@
             "type": "function"
         }
     ],
-
     "PriceOracleProxy": [
         {
             "inputs": [
@@ -18863,7 +18841,6 @@
             "signature": "0xfe10c98d"
         }
     ],
-
     "Maximillion": [
         {
             "constant": true,
@@ -18927,7 +18904,6 @@
             "signature": "constructor"
         }
     ],
-
     "Base200bps_Slope2000bps_Jump20000bps_Kink90": [
         {
             "inputs": [
@@ -19187,7 +19163,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "GovernorAlpha": [
         {
             "inputs": [
@@ -19943,7 +19918,6 @@
             "signature": "0x02a251a3"
         }
     ],
-
     "cDAI": [
         {
             "inputs": [
@@ -21476,7 +21450,6 @@
             "signature": "0x6f307dc3"
         }
     ],
-
     "UNI": [
         {
             "inputs": [
@@ -22191,7 +22164,6 @@
             "type": "function"
         }
     ],
-
     "cUNI": [
         {
             "inputs": [
@@ -23724,7 +23696,6 @@
             "signature": "0x6f307dc3"
         }
     ],
-
     "CompoundLens": [
         {
             "constant": false,
@@ -24594,7 +24565,6 @@
             "type": "function"
         }
     ],
-
     "DAI": [
         {
             "anonymous": false,
@@ -24848,7 +24818,6 @@
             "signature": "0xdd62ed3e"
         }
     ],
-
     "StdComptroller": [
         {
             "constant": true,
@@ -25928,7 +25897,6 @@
             "signature": "0x45b96fe442630264581b197e84bbada861235052c5a1aadfff9ea4e40a969aa0"
         }
     ],
-
     "Unitroller": [
         {
             "constant": true,
@@ -26168,7 +26136,6 @@
             "signature": "0x45b96fe442630264581b197e84bbada861235052c5a1aadfff9ea4e40a969aa0"
         }
     ],
-
     "cDaiDelegate": [
         {
             "anonymous": false,
@@ -27709,7 +27676,6 @@
             "signature": "0x8d925ccd"
         }
     ],
-
     "USDT": [
         {
             "anonymous": false,
@@ -27984,7 +27950,6 @@
             "signature": "0x23b872dd"
         }
     ],
-
     "Reservoir": [
         {
             "inputs": [
@@ -28106,7 +28071,6 @@
             "signature": "0xfc0c546a"
         }
     ],
-
     "Comptroller": [
         {
             "constant": true,
@@ -28346,6 +28310,22 @@
             "signature": "0x45b96fe442630264581b197e84bbada861235052c5a1aadfff9ea4e40a969aa0"
         },
         {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "contributor",
+                    "type": "address"
+                }
+            ],
+            "name": "updateContributorRewards",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function",
+            "signature": "0x741b2525"
+        },
+        {
             "inputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -28403,6 +28383,32 @@
             "inputs": [
                 {
                     "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "oldCompAccrued",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newCompAccrued",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CompAccruedAdjusted",
+            "type": "event",
+            "signature": "0x4a5c134e28b537a76546993ea37f3b60d9190476df7356d3842aa40902e20f04"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
                     "internalType": "contract CToken",
                     "name": "cToken",
                     "type": "address"
@@ -28414,9 +28420,95 @@
                     "type": "uint256"
                 }
             ],
-            "name": "CompSpeedUpdated",
+            "name": "CompBorrowSpeedUpdated",
             "type": "event",
-            "signature": "0x2ab93f65628379309f36cb125e90d7c902454a545c4f8b8cb0794af75c24b807"
+            "signature": "0x20af8e791cc98f74b2d7a391c80980ca8e5aebf3d4060bf581997b6acae2e537"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CompGranted",
+            "type": "event",
+            "signature": "0x98b2f82a3a07f223a0be64b3d0f47711c64dccd1feafb94aa28156b38cd9695c"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "oldCompReceivable",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newCompReceivable",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CompReceivableUpdated",
+            "type": "event",
+            "signature": "0x17fea09d9a7ca41b2f9f9118f18f44848a62e9c70d55dd4385131eb2cf1b7e47"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "contract CToken",
+                    "name": "cToken",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newSpeed",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CompSupplySpeedUpdated",
+            "type": "event",
+            "signature": "0xdeafccd0c0b768b2529f7dcbbe58e155d6023059150b7490ed4535cc3744b92d"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "contributor",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newSpeed",
+                    "type": "uint256"
+                }
+            ],
+            "name": "ContributorCompSpeedUpdated",
+            "type": "event",
+            "signature": "0x386537fa92edc3319af95f1f904dcf1900021e4f3f4e08169a577a09076e66b3"
         },
         {
             "anonymous": false,
@@ -28507,26 +28599,6 @@
             "name": "Failure",
             "type": "event",
             "signature": "0x45b96fe442630264581b197e84bbada861235052c5a1aadfff9ea4e40a969aa0"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": false,
-                    "internalType": "contract CToken",
-                    "name": "cToken",
-                    "type": "address"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "bool",
-                    "name": "isComped",
-                    "type": "bool"
-                }
-            ],
-            "name": "MarketComped",
-            "type": "event",
-            "signature": "0x93c1f3e36ed71139f466a4ce8c9751790e2e33f5afb2df0dcfb3aeabe55d5aa2"
         },
         {
             "anonymous": false,
@@ -28674,26 +28746,6 @@
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "oldCompRate",
-                    "type": "uint256"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
-                    "name": "newCompRate",
-                    "type": "uint256"
-                }
-            ],
-            "name": "NewCompRate",
-            "type": "event",
-            "signature": "0xc227c9272633c3a307d9845bf2bc2509cefb20d655b5f3c1002d8e1e3f22c8b0"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
                     "name": "oldLiquidationIncentiveMantissa",
                     "type": "uint256"
                 },
@@ -28707,26 +28759,6 @@
             "name": "NewLiquidationIncentive",
             "type": "event",
             "signature": "0xaeba5a6c40a8ac138134bff1aaa65debf25971188a58804bad717f82f0ec1316"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
-                    "name": "oldMaxAssets",
-                    "type": "uint256"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
-                    "name": "newMaxAssets",
-                    "type": "uint256"
-                }
-            ],
-            "name": "NewMaxAssets",
-            "type": "event",
-            "signature": "0x7093cf1eb653f749c3ff531d6df7f92764536a7fa0d13530cd26e070780c32ea"
         },
         {
             "anonymous": false,
@@ -28772,22 +28804,6 @@
             "constant": false,
             "inputs": [
                 {
-                    "internalType": "address[]",
-                    "name": "cTokens",
-                    "type": "address[]"
-                }
-            ],
-            "name": "_addCompMarkets",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0xce485c5e"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
                     "internalType": "contract Unitroller",
                     "name": "unitroller",
                     "type": "address"
@@ -28821,16 +28837,21 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "cToken",
+                    "name": "recipient",
                     "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
                 }
             ],
-            "name": "_dropCompMarket",
+            "name": "_grantComp",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
             "type": "function",
-            "signature": "0x3aa729b4"
+            "signature": "0x27efe3cb"
         },
         {
             "constant": true,
@@ -28944,17 +28965,48 @@
             "constant": false,
             "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "compRate_",
-                    "type": "uint256"
+                    "internalType": "contract CToken[]",
+                    "name": "cTokens",
+                    "type": "address[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "supplySpeeds",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "borrowSpeeds",
+                    "type": "uint256[]"
                 }
             ],
-            "name": "_setCompRate",
+            "name": "_setCompSpeeds",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
             "type": "function",
-            "signature": "0x6a491112"
+            "signature": "0xa8b43948"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "contributor",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "compSpeed",
+                    "type": "uint256"
+                }
+            ],
+            "name": "_setContributorCompSpeed",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function",
+            "signature": "0x598ee1cb"
         },
         {
             "constant": false,
@@ -28998,28 +29050,6 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0x607ef6c1"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "newMaxAssets",
-                    "type": "uint256"
-                }
-            ],
-            "name": "_setMaxAssets",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0xd9226ced"
         },
         {
             "constant": false,
@@ -29483,6 +29513,28 @@
                     "type": "address"
                 }
             ],
+            "name": "compBorrowSpeeds",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0xf4a433c0"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
             "name": "compBorrowState",
             "outputs": [
                 {
@@ -29530,8 +29582,14 @@
         },
         {
             "constant": true,
-            "inputs": [],
-            "name": "compClaimThreshold",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "compContributorSpeeds",
             "outputs": [
                 {
                     "internalType": "uint256",
@@ -29542,7 +29600,7 @@
             "payable": false,
             "stateMutability": "view",
             "type": "function",
-            "signature": "0x747026c9"
+            "signature": "0x986ab838"
         },
         {
             "constant": true,
@@ -29575,6 +29633,28 @@
             "stateMutability": "view",
             "type": "function",
             "signature": "0xaa900754"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "compReceivable",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0x85b7beb8"
         },
         {
             "constant": true,
@@ -29624,6 +29704,28 @@
             "stateMutability": "view",
             "type": "function",
             "signature": "0xb21be7fd"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "compSupplySpeeds",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0x6aa875b5"
         },
         {
             "constant": true,
@@ -29711,6 +29813,27 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0xede4edd0"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address[]",
+                    "name": "affectedUsers",
+                    "type": "address[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "amounts",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "fixBadAccruals",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function",
+            "signature": "0x16b95e8f"
         },
         {
             "constant": true,
@@ -29876,6 +29999,50 @@
             "stateMutability": "view",
             "type": "function",
             "signature": "0x007e3dd2"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "contract CToken",
+                    "name": "cToken",
+                    "type": "address"
+                }
+            ],
+            "name": "isDeprecated",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0x94543c15"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "lastContributorBlock",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0xbea6b8b8"
         },
         {
             "constant": false,
@@ -30211,6 +30378,22 @@
             "signature": "0xdcfbc0c7"
         },
         {
+            "constant": true,
+            "inputs": [],
+            "name": "proposal65FixExecuted",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function",
+            "signature": "0xf00a7a92"
+        },
+        {
             "constant": false,
             "inputs": [
                 {
@@ -30272,16 +30455,6 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0x51dff989"
-        },
-        {
-            "constant": false,
-            "inputs": [],
-            "name": "refreshCompSpeeds",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0x4d8e5037"
         },
         {
             "constant": false,
@@ -30533,9 +30706,24 @@
             "stateMutability": "nonpayable",
             "type": "function",
             "signature": "0x6a56947e"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "contributor",
+                    "type": "address"
+                }
+            ],
+            "name": "updateContributorRewards",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function",
+            "signature": "0x741b2525"
         }
     ],
-
     "BAT": [
         {
             "constant": true,
@@ -30954,7 +31142,6 @@
             "type": "event"
         }
     ],
-
     "REP": [
         {
             "constant": true,
@@ -31024,7 +31211,6 @@
             "type": "fallback"
         }
     ],
-
     "WBTC": [
         {
             "constant": true,
@@ -31540,7 +31726,6 @@
             "type": "event"
         }
     ],
-
     "ZRX": [
         {
             "constant": true,
@@ -31754,7 +31939,6 @@
             "type": "event"
         }
     ],
-
     "COMP": [
         {
             "inputs": [
@@ -32309,7 +32493,6 @@
             "signature": "0x23b872dd"
         }
     ],
-
     "cUSDT": [
         {
             "inputs": [
@@ -33842,7 +34025,6 @@
             "signature": "0x6f307dc3"
         }
     ],
-
     "cBAT": [
         {
             "constant": true,
@@ -35078,7 +35260,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "StableCoinInterestRateModel": [
         {
             "anonymous": false,
@@ -35165,7 +35346,6 @@
             "type": "function"
         }
     ],
-
     "DSR_Kink_9000bps_Jump_12000bps_AssumedRF_500bps": [
         {
             "inputs": [
@@ -35483,7 +35663,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "Base0bps_Slope2000bps": [
         {
             "constant": true,
@@ -35594,7 +35773,6 @@
             "signature": "constructor"
         }
     ],
-
     "cErc20Delegate": [
         {
             "inputs": [],
@@ -37094,7 +37272,6 @@
             "signature": "0x6f307dc3"
         }
     ],
-
     "StdComptroller_2_6": [
         {
             "inputs": [],
@@ -38599,7 +38776,6 @@
             "signature": "0x6a56947e"
         }
     ],
-
     "Base200bps_Slope1000bps": [
         {
             "constant": true,
@@ -38710,7 +38886,6 @@
             "signature": "constructor"
         }
     ],
-
     "cETH": [
         {
             "constant": true,
@@ -39894,7 +40069,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "StdComptrollerG2": [
         {
             "constant": true,
@@ -41169,7 +41343,6 @@
             "signature": "0x45b96fe442630264581b197e84bbada861235052c5a1aadfff9ea4e40a969aa0"
         }
     ],
-
     "DSR_Kink_9000bps_Jump_12000bps_AssumedRF_20000bps": [
         {
             "inputs": [
@@ -41487,7 +41660,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "Base500bps_Slope1200bps": [
         {
             "constant": true,
@@ -41598,7 +41770,6 @@
             "signature": "constructor"
         }
     ],
-
     "cSAI": [
         {
             "constant": true,
@@ -42834,7 +43005,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "StdComptrollerG3": [
         {
             "inputs": [],
@@ -44952,7 +45122,6 @@
             "signature": "0x6a56947e"
         }
     ],
-
     "Timelock": [
         {
             "constant": false,
@@ -45382,7 +45551,6 @@
             "signature": "0x76e2796dc3a81d57b0e8504b647febcbeeb5f4af818e164f11eef8131a6a763f"
         }
     ],
-
     "Base200bps_Slope3000bps": [
         {
             "constant": true,
@@ -45493,7 +45661,6 @@
             "signature": "constructor"
         }
     ],
-
     "cREP": [
         {
             "constant": true,
@@ -46729,7 +46896,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "Base200bps_Slope2000bps_Jump8000bps_Kink90": [
         {
             "inputs": [
@@ -46989,7 +47155,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "Base200bps_Slope222bps_Kink90_Jump40": [
         {
             "inputs": [
@@ -47249,7 +47414,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "SAI": [
         {
             "constant": true,
@@ -47816,7 +47980,6 @@
             "type": "event"
         }
     ],
-
     "MoneyMarket": [
         {
             "constant": true,
@@ -48903,7 +49066,6 @@
             "type": "function"
         }
     ],
-
     "StdComptrollerG4": [
         {
             "inputs": [],
@@ -50980,7 +51142,6 @@
             "signature": "0x6a56947e"
         }
     ],
-
     "StdComptrollerG5": [
         {
             "inputs": [],
@@ -53172,7 +53333,6 @@
             "signature": "0x6a56947e"
         }
     ],
-
     "cZRX": [
         {
             "constant": true,
@@ -54408,7 +54568,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "cWBTC": [
         {
             "constant": true,
@@ -55644,7 +55803,6 @@
             "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
         }
     ],
-
     "USDC": [
         {
             "anonymous": false,
@@ -55898,7 +56056,6 @@
             "signature": "0x23b872dd"
         }
     ],
-
     "DSR_Updateable": [
         {
             "inputs": [
@@ -56216,7 +56373,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "PriceData": [
         {
             "anonymous": false,
@@ -56376,7 +56532,6 @@
             "type": "function"
         }
     ],
-
     "PriceFeed": [
         {
             "inputs": [
@@ -57361,7 +57516,6 @@
             "type": "function"
         }
     ],
-
     "LegacyJumpRateModelV2": [
         {
             "inputs": [
@@ -57678,7 +57832,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "JumpRateModelV2": [
         {
             "inputs": [
@@ -57990,7 +58143,6 @@
             "signature": "0x6e71e2d8"
         }
     ],
-
     "CrowdProposalFactory": [
         {
             "inputs": [
