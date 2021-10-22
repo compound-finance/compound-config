@@ -1,6 +1,6 @@
 {
   "Contracts": {
-    "CompoundLens": "0xC1A7ab77932cFD41C4164A253fAF5a06AfC3906e",
+    "CompoundLens": "0x04EC9f6Ce8ca39Ee5c7ADE95C69e38ddcaA8CbB7",
     "Base200bps_Slope2000bps_Jump20000bps_Kink90": "0xC711a6FA133B8793c43fcDe501ADa359C120Ec8b",
     "Base200bps_Slope3000bps": "0x750fc66DC00506DB83dD1B9F51f2e93dFBB4a2Bd",
     "Base500bps_Slope1200bps": "0xD614D53AC95f32A0827728038b2715C1520A7f55",
@@ -61,7 +61,7 @@
     "ETH": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
   },
   "Blocks": {
-    "CompoundLens": 9727772,
+    "CompoundLens": 11279761,
     "Base200bps_Slope2000bps_Jump20000bps_Kink90": 9727779,
     "Base200bps_Slope3000bps": 9727783,
     "Base500bps_Slope1200bps": 9727788,
