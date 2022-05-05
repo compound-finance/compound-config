@@ -108,7 +108,13 @@
       "contract": "FaucetToken"
     }
   },
-  "CTokenDelegate": {},
+  "CTokenDelegate": {
+    "cUsdtDelegate": {
+      "address": "0x98394a121D26F90F4841e7BFE9dD4Aba05E666E4",
+      "contract": "CErc20Delegate",
+      "description": "Standard CErc20 Delegate"
+    }
+  },
   "cTokens": {
     "cUSDC": {
       "name": "Compound USD Coin 📈",
