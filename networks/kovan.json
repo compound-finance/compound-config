@@ -67,7 +67,8 @@
     "cUSDCv3": "0xa7D85950E6E1bB7115c626cBB388Fa0a8C927c1c",
     "Configurator": "0xDb3c6Ae44FE4689f142Ed8dE1a87304249d3d5a6",
     "Compoundv3Admin": "0x1e5Ca6D2cc41935a3c39A3f3B29FBc779A2ceFEa",
-    "Compoundv3Rewards": "0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18"
+    "Compoundv3Rewards": "0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18",
+    "Bulker": "0x9446B268Ad5fa8446193A1B3d4071A7734f92e81"
   },
   "Blocks": {
     "COMP": 18750992,
