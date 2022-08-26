@@ -1225,11 +1225,7 @@
         {
           "components": [
             { "internalType": "address", "name": "cToken", "type": "address" },
-            {
-              "internalType": "uint256",
-              "name": "balanceOf",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "balanceOf", "type": "uint256" },
             {
               "internalType": "uint256",
               "name": "borrowBalanceCurrent",
@@ -1279,11 +1275,7 @@
         {
           "components": [
             { "internalType": "address", "name": "cToken", "type": "address" },
-            {
-              "internalType": "uint256",
-              "name": "balanceOf",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "balanceOf", "type": "uint256" },
             {
               "internalType": "uint256",
               "name": "borrowBalanceCurrent",
@@ -1317,11 +1309,7 @@
     {
       "constant": false,
       "inputs": [
-        {
-          "internalType": "contract CToken",
-          "name": "cToken",
-          "type": "address"
-        }
+        { "internalType": "contract CToken", "name": "cToken", "type": "address" }
       ],
       "name": "cTokenMetadata",
       "outputs": [
@@ -1363,11 +1351,7 @@
               "name": "totalSupply",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "totalCash",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "totalCash", "type": "uint256" },
             { "internalType": "bool", "name": "isListed", "type": "bool" },
             {
               "internalType": "uint256",
@@ -1399,11 +1383,7 @@
               "name": "compBorrowSpeed",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "borrowCap",
-              "type": "uint256"
-            }
+            { "internalType": "uint256", "name": "borrowCap", "type": "uint256" }
           ],
           "internalType": "struct CompoundLens.CTokenMetadata",
           "name": "",
@@ -1463,11 +1443,7 @@
               "name": "totalSupply",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "totalCash",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "totalCash", "type": "uint256" },
             { "internalType": "bool", "name": "isListed", "type": "bool" },
             {
               "internalType": "uint256",
@@ -1499,11 +1475,7 @@
               "name": "compBorrowSpeed",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "borrowCap",
-              "type": "uint256"
-            }
+            { "internalType": "uint256", "name": "borrowCap", "type": "uint256" }
           ],
           "internalType": "struct CompoundLens.CTokenMetadata[]",
           "name": "",
@@ -1517,11 +1489,7 @@
     {
       "constant": false,
       "inputs": [
-        {
-          "internalType": "contract CToken",
-          "name": "cToken",
-          "type": "address"
-        }
+        { "internalType": "contract CToken", "name": "cToken", "type": "address" }
       ],
       "name": "cTokenUnderlyingPrice",
       "outputs": [
@@ -1591,16 +1559,8 @@
               "name": "markets",
               "type": "address[]"
             },
-            {
-              "internalType": "uint256",
-              "name": "liquidity",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "shortfall",
-              "type": "uint256"
-            }
+            { "internalType": "uint256", "name": "liquidity", "type": "uint256" },
+            { "internalType": "uint256", "name": "shortfall", "type": "uint256" }
           ],
           "internalType": "struct CompoundLens.AccountLimits",
           "name": "",
@@ -1651,16 +1611,8 @@
           "components": [
             { "internalType": "uint256", "name": "balance", "type": "uint256" },
             { "internalType": "uint256", "name": "votes", "type": "uint256" },
-            {
-              "internalType": "address",
-              "name": "delegate",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "allocated",
-              "type": "uint256"
-            }
+            { "internalType": "address", "name": "delegate", "type": "address" },
+            { "internalType": "uint256", "name": "allocated", "type": "uint256" }
           ],
           "internalType": "struct CompoundLens.CompBalanceMetadataExt",
           "name": "",
@@ -1676,11 +1628,7 @@
       "inputs": [
         { "internalType": "contract Comp", "name": "comp", "type": "address" },
         { "internalType": "address", "name": "account", "type": "address" },
-        {
-          "internalType": "uint32[]",
-          "name": "blockNumbers",
-          "type": "uint32[]"
-        }
+        { "internalType": "uint32[]", "name": "blockNumbers", "type": "uint32[]" }
       ],
       "name": "getCompVotes",
       "outputs": [
@@ -1725,11 +1673,7 @@
               "name": "proposalId",
               "type": "uint256"
             },
-            {
-              "internalType": "address",
-              "name": "proposer",
-              "type": "address"
-            },
+            { "internalType": "address", "name": "proposer", "type": "address" },
             { "internalType": "uint256", "name": "eta", "type": "uint256" },
             {
               "internalType": "address[]",
@@ -1746,26 +1690,14 @@
               "name": "signatures",
               "type": "string[]"
             },
-            {
-              "internalType": "bytes[]",
-              "name": "calldatas",
-              "type": "bytes[]"
-            },
+            { "internalType": "bytes[]", "name": "calldatas", "type": "bytes[]" },
             {
               "internalType": "uint256",
               "name": "startBlock",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "endBlock",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "forVotes",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "endBlock", "type": "uint256" },
+            { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
             {
               "internalType": "uint256",
               "name": "againstVotes",
@@ -1848,11 +1780,7 @@
               "name": "proposalId",
               "type": "uint256"
             },
-            {
-              "internalType": "address",
-              "name": "proposer",
-              "type": "address"
-            },
+            { "internalType": "address", "name": "proposer", "type": "address" },
             { "internalType": "uint256", "name": "eta", "type": "uint256" },
             {
               "internalType": "address[]",
@@ -1869,26 +1797,14 @@
               "name": "signatures",
               "type": "string[]"
             },
-            {
-              "internalType": "bytes[]",
-              "name": "calldatas",
-              "type": "bytes[]"
-            },
+            { "internalType": "bytes[]", "name": "calldatas", "type": "bytes[]" },
             {
               "internalType": "uint256",
               "name": "startBlock",
               "type": "uint256"
             },
-            {
-              "internalType": "uint256",
-              "name": "endBlock",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "forVotes",
-              "type": "uint256"
-            },
+            { "internalType": "uint256", "name": "endBlock", "type": "uint256" },
+            { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
             {
               "internalType": "uint256",
               "name": "againstVotes",
