@@ -63,7 +63,11 @@
     "CommunityComptroller": "0xA06058e40d6a6Dd0D5Dc4c6C394864BCA74d3002",
     "PriceOracle": "0x37ac0cb24b5DA520B653A5D94cFF26EB08d4Dc02",
     "PriceOracleProxy": "0x37ac0cb24b5DA520B653A5D94cFF26EB08d4Dc02",
-    "TemporaryComptroller": "0x4cc3cc0b761b4f5581af978dd3b2269a784ec03a"
+    "TemporaryComptroller": "0x4cc3cc0b761b4f5581af978dd3b2269a784ec03a",
+    "cUSDCv3": "0xa7D85950E6E1bB7115c626cBB388Fa0a8C927c1c",
+    "Configurator": "0xDb3c6Ae44FE4689f142Ed8dE1a87304249d3d5a6",
+    "Compoundv3Admin": "0x1e5Ca6D2cc41935a3c39A3f3B29FBc779A2ceFEa",
+    "Compoundv3Rewards": "0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18"
   },
   "Blocks": {
     "COMP": 18750992,
