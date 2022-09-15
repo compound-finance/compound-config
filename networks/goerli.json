@@ -79,7 +79,7 @@
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6,
-      "contract": "FaucetToken",
+      "contract": "FiatTokenProxy",
       "address": "0x07865c6E87B9F70255377e024ace6630C1Eaa37F"
     },
     "USDT": {
