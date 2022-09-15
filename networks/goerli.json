@@ -39,13 +39,13 @@
     "cDAI": 7560737,
     "cETH": 7560718,
     "cUNI": 7560727,
-    "cUSDC": 7560722,
+    "cUSDC": 7599277,
     "cUSDT": 7560746,
     "cWBTC": 7560741,
     "COMP": 7550234,
     "DAI": 7560735,
     "UNI": 7560724,
-    "USDC": 7550252,
+    "USDC": 5516589,
     "USDT": 7560744,
     "WBTC": 7550256
   },
@@ -79,8 +79,8 @@
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6,
-      "contract": "FaucetToken",
-      "address": "0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD"
+      "contract": "FiatTokenProxy",
+      "address": "0x07865c6E87B9F70255377e024ace6630C1Eaa37F"
     },
     "USDT": {
       "description": "Standard",
@@ -142,11 +142,11 @@
       "name": "Compound USD Coin",
       "symbol": "cUSDC",
       "decimals": 8,
-      "underlying": "0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD",
+      "underlying": "0x07865c6E87B9F70255377e024ace6630C1Eaa37F",
       "contract": "CErc20Immutable",
       "initial_exchange_rate_mantissa": "200000000000000",
       "admin": "0x8Fa336EB4bF58Cfc508dEA1B0aeC7336f55B1399",
-      "address": "0x701Db4333e19C7fB72140B75Cac07F43D462A3d4"
+      "address": "0x73506770799Eb04befb5AaE4734e58C2C624F493"
     },
     "cUSDT": {
       "name": "Compound USDT",
@@ -214,11 +214,11 @@
       "name": "Compound USD Coin",
       "symbol": "cUSDC",
       "decimals": 8,
-      "underlying": "0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD",
+      "underlying": "0x07865c6E87B9F70255377e024ace6630C1Eaa37F",
       "contract": "CErc20Immutable",
       "initial_exchange_rate_mantissa": "200000000000000",
       "admin": "0x8Fa336EB4bF58Cfc508dEA1B0aeC7336f55B1399",
-      "address": "0x701Db4333e19C7fB72140B75Cac07F43D462A3d4"
+      "address": "0x73506770799Eb04befb5AaE4734e58C2C624F493"
     },
     "cUSDT": {
       "name": "Compound USDT",
